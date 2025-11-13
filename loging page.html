@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes Sharing website - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafbfc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: -moz-element(flex);
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgb(0,0,0,2);
+      text-align: center;
+      width: 500px;
+    }
+    input {
+      width: 95%;
+      padding: 20px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 20px;
+      margin-top: 15px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #1d4ed8;
+    }
+    p {
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    
+    
+
+    
+    .bottom-btn {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="card">
+    <h2>Edu-Notes</h2>
+    <p>"Welcome to our online Note Sharing Platform - log in to get started</p>
+    <p>Login using your University Gmail</p>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button type="submit">Login</button>
+    </form>
+    <p>Only registered university emails are allowed.</p>
+  </div>
+ <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const email = document.getElementById("email").value;
+
+      
+      if (email.endsWith("@poornima.edu.in")) {
+        window.location.href = "description1.html"; 
+      } else {
+        alert("Only University emails are allowed!");
+      }
+    });
+    
+
+  </script>
+  
+  
+
+  
+</body>
+</html>

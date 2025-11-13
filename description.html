@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to EduNotes</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: white;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Full-page Watermark */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.06);
+      z-index: -1;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Main content wrapper */
+    .main-content {
+      position: relative;
+      z-index: 10;
+      max-width: 750px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 34px;
+      text-align: center;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: #555;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .point {
+      margin-bottom: 22px;
+    }
+
+    .point-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 5px;
+    }
+
+    .point-desc {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.4;
+    }
+    .dev{
+      background-color: blue;
+      align-items: end;
+      border: 5px;
+      border-radius: 2px;
+      text-align: center;
+
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Watermark Layer -->
+  <div class="watermark">EduNotes</div>
+
+  <!-- All content wrapped in one div -->
+  <div class="main-content">
+    <h1>Welcome to EduNotes</h1>
+    <p class="subtitle">Your smart platform for sharing and accessing notes easily!</p>
+
+    <div class="point">
+      <div class="point-title">📌 What is EduNotes?</div>
+      <div class="point-desc">EduNotes is a digital platform where students can upload, access, and share study materials easily.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-title">📌 Easy Note Sharing</div>
+      <div class="point-desc">Upload notes in seconds and let others download or view them anytime.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-title">📌 Study Collaboration</div>
+      <div class="point-desc">Friends and classmates can join, view, and exchange useful study content.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-title">📌 Access Anywhere</div>
+      <div class="point-desc">Notes are available on mobile, laptop, or tablet—anytime, anywhere!</div>
+    </div>
+
+    <div class="point">
+      <div class="point-title">📌 Secure & Organized</div>
+      <div class="point-desc">All files are stored safely and arranged by subject or semester.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-title">📌 Why Use EduNotes?</div>
+      <div class="point-desc">Saves time, improves preparation, and helps students study smarter together.</div>
+    </div>
+    <div class="dev">
+        <button onclick="window.location.href='1stpage.html'"> NEXT </button>
+    </div>
+  </div>
+
+</body>
+</html>

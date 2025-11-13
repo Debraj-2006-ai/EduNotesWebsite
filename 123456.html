@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Subjects - EduNote</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+    body {background: #f4f7fb; padding: 20px;}
+    h1 {font-size: 28px; margin-bottom: 10px; font-weight: 700;}
+    .container {max-width: 1200px; margin: auto;}
+    .top-bar {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 20px;}
+    .search-box input {padding: 10px; width: 260px; border: 1px solid #ccc; border-radius: 6px;}
+    select {padding: 10px; border-radius: 6px; border: 1px solid #ccc;}
+    .subjects {display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 15px;}
+    .card {background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: .2s;} 
+    .card:hover {transform: scale(1.02);} 
+    .card-title {font-size: 18px; font-weight: 600; margin-bottom: 5px;}
+    .small {font-size: 13px; color: #666; margin-bottom: 10px;}
+    .tag {display: inline-block; padding: 4px 8px; background: #eef1f7; border-radius: 12px; font-size: 11px; margin: 3px;}
+    .choose {margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 14px;}
+    .choose button {padding: 7px 12px; border: 1px solid #444; background: white; border-radius: 6px; cursor: pointer; transition: .2s;}
+    .choose button:hover {background: #f2f2f2;}
+    .footer-btn {margin-top: 20px; text-align: center;}
+    .footer-btn button {padding: 12px 25px; background: #0066ff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Choose Subjects</h1>
+
+    <div class="top-bar">
+      <div class="search-box"><input type="text" placeholder="Search subjects..." id="searchInput"></div>
+      <select id="year">
+        <option>1st Year</option>
+        <option>2nd Year</option>
+        <option>3rd Year</option>
+        <option>4th Year</option>
+      </select>
+    </div>
+
+    <div class="subjects" id="subjectList"></div>
+
+    <div class="footer-btn">
+      <button onclick="showSelected()">Continue</button>
+    </div>
+  </div>
+
+<script>
+  
+const subjects = [
+  // 1st Year
+  {id:1, code:"MA101", title:"Calculus & Linear Algebra", sem:1, tags:["math","theory"]},
+  {id:2, code:"PH101", title:"Physics I", sem:1, tags:["lab","mechanics"]},
+  {id:3, code:"BE101", title:"Basic Electronics", sem:2, tags:["electronics"]},
+  {id:4, code:"CS101", title:"Intro to Programming", sem:1, tags:["coding","lab"]},
+  {id:5, code:"ME101", title:"Engineering Mechanics", sem:2, tags:["mechanics"]},
+  {id:6, code:"HS101", title:"Communication Skills", sem:1, tags:["soft skill"]},
+
+  // 2nd Year
+  {id:7, code:"CS201", title:"Data Structures", sem:3, tags:["coding","DSA"]},
+  {id:8, code:"MA201", title:"Discrete Mathematics", sem:3, tags:["math","logic"]},
+  {id:9, code:"EC201", title:"Digital Logic Design", sem:4, tags:["electronics","logic"]},
+  {id:10, code:"CS202", title:"OOP in C++", sem:4, tags:["coding","OOP"]},
+  {id:11, code:"HS201", title:"Technical Communication", sem:3, tags:["soft skill"]},
+  {id:12, code:"CS203", title:"Computer Organization", sem:4, tags:["computer","architecture"]},
+
+  // 3rd Year
+  {id:13, code:"CS301", title:"Operating Systems", sem:5, tags:["system","OS"]},
+  {id:14, code:"CS302", title:"Database Management System", sem:5, tags:["DBMS","SQL"]},
+  {id:15, code:"CS303", title:"Computer Networks", sem:6, tags:["network","TCP/IP"]},
+  {id:16, code:"CS304", title:"Theory of Computation", sem:6, tags:["TOC","automata"]},
+
+  // 4th Year
+  {id:17, code:"CS401", title:"Machine Learning", sem:7, tags:["ML","AI"]},
+  {id:18, code:"CS402", title:"Distributed Systems", sem:7, tags:["cloud","distributed"]},
+  {id:19, code:"CS403", title:"Cyber Security", sem:8, tags:["security","cyber"]},
+  {id:20, code:"CS404", title:"Blockchain Technology", sem:8, tags:["blockchain","crypto"]}
+];
+
+let selected = new Set();
+
+function render() {
+  const year = document.getElementById("year").value;
+  const q = document.getElementById("searchInput").value.toLowerCase();
+
+  const yearSem = {
+    "1st Year": [1, 2],
+    "2nd Year": [3, 4],
+    "3rd Year": [5, 6],
+    "4th Year": [7, 8]
+  };
+
+  const filtered = subjects.filter(s =>
+    yearSem[year].includes(s.sem) &&
+    (s.title.toLowerCase().includes(q) || s.code.toLowerCase().includes(q))
+  );
+
+  document.getElementById("subjectList").innerHTML = filtered.map(s => `
+    <div class="card" onclick="toggle(${s.id})">
+      <div class="card-title">${s.title}</div>
+      <div class="small">${s.code} • Semester ${s.sem}</div>
+      <div>${s.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+      <div class="choose">
+        <span>Choose</span>
+        <input type="checkbox" ${selected.has(s.id)?"checked":""} onclick="toggle(${s.id}); event.stopPropagation();">
+      </div>
+    </div>`).join("");
+}
+
+function toggle(id){ selected.has(id) ? selected.delete(id) : selected.add(id); render(); }
+
+function showSelected(){ alert("Selected IDs: "+ [...selected].join(", ") ); }
+
+render();
+
+
+
+</script>
+</body>
+</html>

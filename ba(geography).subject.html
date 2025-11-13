@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Subjects - EduNote</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+    body {background: #f4f7fb; padding: 20px;}
+    h1 {font-size: 28px; margin-bottom: 10px; font-weight: 700;}
+    .container {max-width: 1200px; margin: auto;}
+    .top-bar {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 20px;}
+    .search-box input {padding: 10px; width: 260px; border: 1px solid #ccc; border-radius: 6px;}
+    select {padding: 10px; border-radius: 6px; border: 1px solid #ccc;}
+    .subjects {display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 15px;}
+    .card {background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: .2s;} 
+    .card:hover {transform: scale(1.02);} 
+    .card-title {font-size: 18px; font-weight: 600; margin-bottom: 5px;}
+    .small {font-size: 13px; color: #666; margin-bottom: 10px;}
+    .tag {display: inline-block; padding: 4px 8px; background: #eef1f7; border-radius: 12px; font-size: 11px; margin: 3px;}
+    .choose {margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 14px;}
+    .choose button {padding: 7px 12px; border: 1px solid #444; background: white; border-radius: 6px; cursor: pointer; transition: .2s;}
+    .choose button:hover {background: #f2f2f2;}
+    .footer-btn {margin-top: 20px; text-align: center;}
+    .footer-btn button {padding: 12px 25px; background: #0066ff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Choose Subjects(1st year)</h1>
+
+    <div class="top-bar">
+      <div class="search-box"><input type="text" placeholder="Search subjects..." id="searchInput"></div>
+      <select id="year">
+        <option>1st Year</option>
+        <option value="2nd year.html">2nd Year</option>
+        <option>3rd Year</option>
+        <option>4th Year</option>
+      </select>
+    </div>
+
+    <div class="subjects" id="subjectList"></div>
+
+    <div class="footer-btn">
+      <button onclick="showSelected()">Continue</button>
+    </div>
+  </div>
+
+<script>
+const subjects = [
+  {id:1, code:"MA101", title:"Communicative English", sem:1, tags:["math","theory"]},
+  {id:2, code:"PH101", title:"Language Paper 1", sem:1, tags:["lab","mechanics"]},
+  {id:3, code:"BE101", title:"History of English Literature", sem:2, tags:["lab","theory"]},
+  {id:4, code:"CS101", title:"English Poetry", sem:1, tags:["lab","theory"]},
+  {id:5, code:"ME101", title:"English Prose", sem:2, tags:["mechanics"]},
+  {id:6, code:"HS101", title:"Introduction to Environmental Studies", sem:1, tags:["soft skill"]},
+  {id:7, code:"HS101", title:"Cultural Education 1", sem:2, tags:["soft skill"]},
+  {id:6, code:"HS101", title:"Language Paper 2", sem:1, tags:["soft skill"]},
+  {id:6, code:"HS101", title:"Indian Writing in English", sem:1, tags:["soft skill"]},
+  {id:6, code:"HS101", title:"Introduction to Drama", sem:1, tags:["soft skill"]},
+  {id:6, code:"HS101", title:"Soft Skills",sem:1, tags:["soft skill"]},
+];
+
+let selected = new Set();
+
+function render() {
+  const year = document.getElementById("year").value;
+  const q = document.getElementById("searchInput").value.toLowerCase();
+
+  const filtered = subjects.filter(s =>
+    (year === "1st Year" ? s.sem===1||s.sem===2 : true) &&
+    (s.title.toLowerCase().includes(q) || s.code.toLowerCase().includes(q))
+  );
+
+  document.getElementById("subjectList").innerHTML = filtered.map(s => `
+    <div class="card" onclick="toggle(${s.id})">
+      <div class="card-title">${s.title}</div>
+      <div class="small">${s.code} • Semester ${s.sem}</div>
+      <div>${s.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+      <div class="choose">
+        <span>Choose</span>
+        <input type="checkbox" ${selected.has(s.id)?"checked":""} onclick="toggle(${s.id}); event.stopPropagation();">
+      </div>
+    </div>`
+  ).join("");
+}
+
+function toggle(id){ selected.has(id) ? selected.delete(id) : selected.add(id); render(); }
+function showSelected(){ alert("Selected IDs: "+ [...selected].join(", ") ); }
+
+render();
+document.getElementById("year").addEventListener("change", function(){
+  window.open(this.value, "_blank"); 
+});
+</script>
+</body>
+</html>

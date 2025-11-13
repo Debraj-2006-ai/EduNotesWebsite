@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year Subjects</title>
+</head>
+<body>
+
+<h2>Select Academic Year</h2>
+
+<select id="yearSelect">
+  <option selected disabled>Select Year</option>
+  <option value="1st">1st Year</option>
+  <option value="2nd">2nd Year</option>
+  <option value="3rd">3rd Year</option>
+  <option value="4th">4th Year</option>
+</select>
+
+<h3>Subjects:</h3>
+<ul id="subjectList"></ul>
+
+<script>
+const subjects = {
+  "1st": ["Maths", "Physics", "Chemistry", "Programming Basics", "English"],
+  "2nd": ["Data Structures", "OOP", "Discrete Maths", "DBMS", "Operating System"],
+  "3rd": ["Computer Networks", "DAA", "Web Tech", "Machine Learning", "Compiler Design"],
+  "4th": ["Cloud Computing", "AI", "Blockchain", "Cyber Security", "Project / Internship"]
+};
+
+document.getElementById("yearSelect").addEventListener("change", function(){
+  const year = this.value;
+  const list = subjects[year];
+
+  let html = "";
+  list.forEach(sub => {
+      html += `<li>${sub}</li>`;
+  });
+
+  document.getElementById("subjectList").innerHTML = html;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name=" viewport" content="width= device-vidth", intial-csale="1">
+
+        <title> 1stpage</title>
+        <style>
+            body{
+                font-family: arial,sans-serif;
+                background-color: hsl(330, 20%, 98%);
+                text-align: center;
+                padding: 40px;
+
+            }
+            h1{
+                color: #2c3e50;
+                margin-bottom: 20px;
+            }
+            .courses{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                gap: 15px;
+                max-width: 1000px;
+                margin: auto;
+            }
+            .course{
+                background: #ffffff;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 20px;
+                font-size: 26px;
+                font-weight: bold;
+                box-shadow: 0 2px 5px rgba(0,0,0,0,5);
+                transition: o.35;
+            }
+            .course:hover{
+                background: #3498db;
+                color: white;
+                cursor: pointer;
+            }
+            
+        </style>
+    
+    </head>
+    <body>
+        <h1> Choose your Deparment </h1>
+        <p> please select your BBA deperment</p>
+        <div class="courses">
+            
+            
+            <div class="course">BBA-(Marketing)</div>
+            <div class="course">BBA-(Finance)</div>
+            <div class="course">BBA-(Human Resource Management)</div>
+            <div class="course">BBA-(Information Technology)</div>
+            <div class="course">BBA-(Business Analytics)</div>
+            <div class="course">BBA-(Global)</div>
+            
+
+
+        </div>
+    </body>
+</html>

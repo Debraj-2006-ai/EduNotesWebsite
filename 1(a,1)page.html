@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name=" viewport" content="width= device-vidth", intial-csale="1">
+
+        <title> 1stpage</title>
+        <style>
+            body{
+                 font-family: arial,sans-serif;
+                background-color: #f0f1ea;
+                text-align: center;
+                padding: 20px;
+                font-size: 20px;
+
+                
+                
+                
+            }
+            h1{
+                color: #2c3e50;
+                margin-bottom: 20px;
+            }
+            .courses{
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+                gap: 15px;
+                max-width: 500px;
+                margin: auto;
+            }
+            .course{
+                background: #f0eaea;
+                border: 4px solid #ddd;
+                border-radius: 15px;
+                padding: 20px;
+                font-size: 26px;
+                font-weight: bolder;
+                box-shadow: 0 2px 5px rgba(0,0,0,0,20);
+                transition: o.35;
+            }
+            .course:hover{
+                background: #3498db;
+                color: white;
+                cursor: pointer;
+            }
+            
+        </style>
+    
+    </head>
+    <body>
+        <h1>please choose your spesalization </h1>
+        <p> </p>
+        <div class="courses">
+           
+            <div class="course" onclick="window.location.href ='GEN-page.html'">CSE -GEN</div>
+            <div class="course" onclick="window.location.href ='AI-ML.html'">CSE AI-ML</div>
+            <div class="course" onclick="window.location.href ='AI-DS.html'">CSE AI-DS</div>
+            <div class="course"  onclick="window.location.href ='BLOCK-CHAIN.html'">CSE BLOCK-CHAIN</div>
+            <div class="course" onclick="window.location.href ='CYBER-SECURITY.html'">CSE CYBER-SECURITY</div>
+            <div class="course" onclick="window.location.href ='UI-UX DESIGEN.html'">CSE UI-UX DESIGEN</div>
+            <div class="course" onclick="window.location.href ='Cloud-Computing.html'">CSE Cloud Computing</div>
+            
+        </div>
+    </body>
+</html>
